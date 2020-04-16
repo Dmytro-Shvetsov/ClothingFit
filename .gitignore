@@ -1,0 +1,10 @@
+*.csv
+*.gz
+*.tar
+*.log
+*.json
+.ipynb_checkpoints
+
+images/
+model/
+
