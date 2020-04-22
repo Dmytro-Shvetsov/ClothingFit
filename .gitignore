@@ -5,6 +5,5 @@
 *.json
 .ipynb_checkpoints
 
-images/
 model/
 
