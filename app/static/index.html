@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <h2>Would this clothing fit me?</h2>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </header>
+    <main>
+    <form id="clothingFitForm" class="container" method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.id_for_label != "id_bust_size_cat" %}
+                <label class="error">{{ field.errors }}</label>
+                <label class="input-label">{{ field.label }}</label>
+                    {{ field }}
+            {% else %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+        <input type="submit" class="button" value="Get prediction"/>
+    </form>
+    </main>
+</body>
+</html>

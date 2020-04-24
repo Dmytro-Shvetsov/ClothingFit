@@ -7,3 +7,7 @@
 
 model/
 
+venv/
+.idea/
+__pycache__/
+settings.py
