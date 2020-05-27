@@ -14,13 +14,9 @@
     <form id="clothingFitForm" class="container" method="POST" action="{% url 'home' %}">
         {% csrf_token %}
         {% for field in form %}
-            {% if field.id_for_label != "id_bust_size_cat" %}
-                <label class="input-label">{{ field.label }}</label>
-                    {{ field }}
-                <label class="error">{{ field.errors }}</label>
-            {% else %}
+            <label class="input-label">{{ field.label }}</label>
                 {{ field }}
-            {% endif %}
+            <label class="error">{{ field.errors }}</label>
         {% endfor %}
         <input type="submit" class="button" value="Get prediction"/>
     </form>
