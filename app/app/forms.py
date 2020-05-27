@@ -1,12 +1,7 @@
 from django import forms
 from os import path
 from .settings import MODEL_DIR
-
-
-def get_choices(fp):
-    with open(fp) as fid:
-        choices = map(lambda x: x.strip(), fid.readline().split(','))
-        return tuple([(item.lower(), item) for item in choices])
+from .utils import get_choices
 
 
 class ClothingFitForm(forms.Form):
@@ -25,24 +20,17 @@ class ClothingFitForm(forms.Form):
         choices=get_choices(path.join(MODEL_DIR, 'txt/rented_for_categories.txt')),
         widget=forms.Select({'class': 'form-input'})
     )
-    review_rating = forms.FloatField(
-        label='Your rating to the product(1-5)',
-        min_value=1,
-        max_value=5,
-        widget=forms.NumberInput(
-            {'class': 'form-input',
-             'placeholder': 'Rating'})
-    )
+
     age = forms.IntegerField(
         label='Your age',
-        min_value=1,
+        min_value=14,
         widget=forms.NumberInput({
             'class': 'form-input',
             'placeholder': 'Age'})
     )
     weight = forms.FloatField(
         label='Your weight in kilograms',
-        min_value=1.0,
+        min_value=30.0,
         widget=forms.NumberInput({
             'class': 'form-input',
             'placeholder': 'Weight'})
@@ -55,17 +43,6 @@ class ClothingFitForm(forms.Form):
             'placeholder': 'Height'})
     )
 
-    bust_size_num = forms.IntegerField(
-        label='Your bust size',
-        min_value=1,
-        widget=forms.NumberInput({
-            'class': 'form-input',
-            'placeholder': 'Bust size'})
-    )
-    bust_size_cat = forms.ChoiceField(
-        choices=get_choices(path.join(MODEL_DIR, 'txt/bust_size_categories.txt')),
-        widget=forms.Select({'class': 'form-input'})
-    )
     body_type = forms.ChoiceField(
         label='Your body type',
         choices=get_choices(path.join(MODEL_DIR, 'txt/body_type_categories.txt')),
@@ -74,5 +51,4 @@ class ClothingFitForm(forms.Form):
 
     class Meta:
         fields = ('product_category', 'product_size', 'rented_for',
-                  'review_rating', 'age', 'weight', 'height',
-                  'bust_size_num', 'bust_size_cat', 'body_type')
+                  'age', 'weight', 'height', 'body_type')

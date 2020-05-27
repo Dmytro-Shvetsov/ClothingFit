@@ -63,3 +63,11 @@ body{
     border: 1px solid white;
     padding-top: 5px;
 }
+ul{
+    list-style-type: none;
+}
+.errorlist{
+    font-size: 13px;
+    color: red;
+    padding-bottom: 5px;
+}

@@ -15,15 +15,18 @@
         {% csrf_token %}
         {% for field in form %}
             {% if field.id_for_label != "id_bust_size_cat" %}
-                <label class="error">{{ field.errors }}</label>
                 <label class="input-label">{{ field.label }}</label>
                     {{ field }}
+                <label class="error">{{ field.errors }}</label>
             {% else %}
                 {{ field }}
             {% endif %}
         {% endfor %}
         <input type="submit" class="button" value="Get prediction"/>
     </form>
+    <div id="prediction-output">
+        {{ prediction }}
+    </div>
     </main>
 </body>
 </html>
