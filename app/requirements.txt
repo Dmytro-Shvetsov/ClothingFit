@@ -1,2 +1,2 @@
-django==3.0.5
+django==3.1.12
 scikit-learn==0.21.1
